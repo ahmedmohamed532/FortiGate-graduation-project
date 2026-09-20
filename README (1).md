@@ -11,7 +11,7 @@
 ## 👥 Team
 
 - Ahmed Mohamed Ali
-- Ebrahim Ashraf
+- Ibrahim Ashraf Gado
 - Mohamed Amr
 
 **Discussion date:** September 20, 2026
