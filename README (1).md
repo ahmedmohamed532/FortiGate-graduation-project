@@ -121,7 +121,7 @@ Describe each result in words — exact command output, or a short summary of wh
 | Routing verification | `get router info routing-table all` | Traffic to the remote LAN confirmed routed through the IPsec tunnel. |
 | Firewall policy verification | Policy hit count / traffic logs | Firewall policies confirmed to allow traffic between the HQ and Branch networks. |
 | NAT verification | Policy inspection | NAT confirmed disabled for VPN traffic, preserving the original source and destination IPs. |
-| End-to-end test | Ping / traceroute across the tunnel | Full communication confirmed between HQ LAN (192.168.10.0/24) and Branch LAN (192.168.20.0/24). |
+| End-to-end test | Ping / traceroute across the tunnel | full communication was tested between HQ LAN (192.168.10.0/24) and Branch LAN (192.168.20.0/24). |
 
 ## 📂 Repository Structure
 
