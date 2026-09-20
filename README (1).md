@@ -83,15 +83,17 @@ The network follows a classic **HQ-to-Branch transit topology**: two separate lo
 - Local users/groups.
 - (Optional) Integration with RADIUS/LDAP
 
+### 6. Security Profile
+Not implemented. The FortiGate license used in this lab is a limited/evaluation license and does not include UTM security profile support (AntiVirus, Web Filter, etc.), so this requirement could not be configured in the current topology.
 
 
-### 6. VPN
+### 7. VPN
 IPSec site-to-site (route-based) VPN configured between Firewall-HQ and Firewall-BR over the WAN transit link (port1 on each side).
 NAT disabled for VPN traffic to preserve the original source and destination IP addresses.
 SSL-VPN for remote access not implemented — the FortiGate license used only exposes 3 interfaces, which wasn't enough to dedicate one for SSL-VPN alongside the WAN, LAN, and management interfaces already in use.
 
 
-### 7. Plus Features (optional)
+### 8. Plus Features (optional)
 Not implemented. SD-WAN and HA both require additional interfaces/devices that are not available in this license-limited topology.
 - [ ] SD-WAN
 - [ ] High Availability (HA)
