@@ -156,7 +156,7 @@ This project gave us hands-on experience with a realistic HQ-to-Branch FortiGate
 This project was created as part of the requirements for the **FortiOS 7.6 Administrator** course — Creativa.
 
 - Ahmed Mohamed Ali
-- Ebrahim Ashraf
+- Ibrahim Ashraf Gado
 - Mohamed Amr
 
 🔗 [LinkedIn post link](#) <!-- TODO: add the link after publishing -->
