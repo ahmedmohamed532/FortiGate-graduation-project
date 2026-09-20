@@ -60,48 +60,41 @@ The network follows a classic **HQ-to-Branch transit topology**: two separate lo
 - Changed the default admin password on both firewalls.
 - Created an additional admin account with a custom access profile.
 
-📄 File: [`configs/accounts.conf`](configs/accounts.conf)
 
 ### 2. Interface Configuration
 - **Firewall-HQ:** port1 = WAN (10.0.0.1/24) · port2 = LAN (192.168.10.1/24) · port3 = management (172.16.47.0/24)
 - **Firewall-BR:** port1 = WAN (10.0.0.2/24) · port2 = LAN (192.168.20.1/24) · port3 = management (172.16.47.0/24)
 
-📄 File: [`configs/interfaces.conf`](configs/interfaces.conf)
 
 ### 3. Routing
 - Static route on Firewall-HQ: `192.168.20.0/24 via 10.0.0.2 (port1)`
 - Static route on Firewall-BR: `192.168.10.0/24 via 10.0.0.1 (port1)`
 - Default route on both firewalls via `172.16.47.2 (port3)`
 
-📄 File: [`configs/routing.conf`](configs/routing.conf)
 
 ### 4. Firewall Policy
 - HQ: policy `port2 → port1`, NAT disabled, action ACCEPT.
 - Branch: policy `port1 → port2`, NAT disabled, action ACCEPT.
 - Return traffic is handled automatically since FortiGate is stateful (a matching reverse policy is still good practice).
 
-📄 File: [`configs/firewall-policy.conf`](configs/firewall-policy.conf)
 
 ### 5. Authentication
 <!-- TODO -->
 - Local users/groups.
 - (Optional) Integration with RADIUS/LDAP.
 
-📄 File: [`configs/authentication.conf`](configs/authentication.conf)
 
 ### 6. Security Profiles
 <!-- TODO -->
 - AntiVirus profile.
 - Web Filter profile.
 
-📄 File: [`configs/security-profiles.conf`](configs/security-profiles.conf)
 
 ### 7. VPN
 <!-- TODO -->
 - IPSec site-to-site (route-based) between Firewall-HQ and Firewall-BR.
 - (Optional) SSL-VPN for remote access.
 
-📄 File: [`configs/vpn.conf`](configs/vpn.conf)
 
 ### 8. Plus Features (optional)
 <!-- TODO: remove this section if you don't implement it -->
@@ -154,7 +147,7 @@ fortigate-graduation-project/
 
 ## 🎯 Conclusion
 
-<!-- TODO: write a short paragraph summarizing what you learned and the main challenge you faced -->
+This project gave us hands-on experience with a realistic HQ-to-Branch FortiGate deployment, going beyond single-device configuration into how two firewalls cooperate to route and secure traffic between sites. Working through the routing and policy logic step by step made it clear how closely interface configuration, static routing, and firewall policies depend on each other — a mistake in one layer (for example, a missing static route or a policy pointing to the wrong interface) breaks connectivity even if everything else is correct. We also came to appreciate FortiGate's stateful inspection firsthand: return traffic from the Branch site was permitted automatically once the initial session was established, which reinforced how session-based firewalls differ from simple stateless packet filtering. Overall, the project strengthened our understanding of how enterprise firewalls are used not just to block traffic, but to actively route and broker connectivity between separate, trusted networks.
 
 ---
 
