@@ -86,7 +86,9 @@ The network follows a classic **HQ-to-Branch transit topology**: two separate lo
 
 
 ### 6. VPN
-Not implemented. Only 3 interfaces are available on the FortiGate license used in this lab, which wasn't enough to dedicate a separate interface for IPSec/SSL-VPN alongside the WAN, LAN, and management interfaces already in use. Site-to-site connectivity between HQ and Branch is instead achieved through the static-routed WAN transit link described above.
+IPSec site-to-site (route-based) VPN configured between Firewall-HQ and Firewall-BR over the WAN transit link (port1 on each side).
+NAT disabled for VPN traffic to preserve the original source and destination IP addresses.
+SSL-VPN for remote access not implemented — the FortiGate license used only exposes 3 interfaces, which wasn't enough to dedicate one for SSL-VPN alongside the WAN, LAN, and management interfaces already in use.
 
 
 ### 7. Plus Features (optional)
@@ -112,11 +114,13 @@ Example: **PC-1 (192.168.10.10) pings PC-2 (192.168.20.10)**
 
 Describe each result in words — exact command output, or a short summary of what happened.
 
-Test	Command / Method	Result
-Connectivity between sites	ping 192.168.20.10 from PC-1	<!-- TODO: e.g. "Reply from 192.168.20.10, 0% packet loss, avg RTT 2ms" -->
-HQ routing table	get router info routing-table all	<!-- TODO: e.g. "Static route to 192.168.20.0/24 via 10.0.0.2 present, distance 10" -->
-Firewall policy hit count	diagnose firewall statistics	<!-- TODO: e.g. "Policy ID 1 (port2→port1) showing active sessions and increasing packet count" -->
-
+Test	Method	Result
+Ping test	ping 192.168.20.10 from PC-1 (ICMP)	Connectivity confirmed between PC-1 (HQ) and PC-2 (Branch).
+VPN tunnel verification	diagnose vpn tunnel list	IPsec tunnel between the HQ and Branch FortiGates confirmed established and active.
+Routing verification	get router info routing-table all	Traffic to the remote LAN confirmed routed through the IPsec tunnel.
+Firewall policy verification	Policy hit count / traffic logs	Firewall policies confirmed to allow traffic between the HQ and Branch networks.
+NAT verification	Policy inspection	NAT confirmed disabled for VPN traffic, preserving the original source and destination IPs.
+End-to-end test	Ping / traceroute across the tunnel	Full communication confirmed between HQ LAN (192.168.10.0/24) and Branch LAN (192.168.20.0/24).
 ---
 
 ## 📂 Repository Structure
