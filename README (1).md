@@ -81,23 +81,16 @@ The network follows a classic **HQ-to-Branch transit topology**: two separate lo
 ### 5. Authentication
 <!-- TODO -->
 - Local users/groups.
-- (Optional) Integration with RADIUS/LDAP.
+- (Optional) Integration with RADIUS/LDAP
 
 
-### 6. Security Profiles
-<!-- TODO -->
-- AntiVirus profile.
-- Web Filter profile.
+
+### 6. VPN
+Not implemented. Only 3 interfaces are available on the FortiGate license used in this lab, which wasn't enough to dedicate a separate interface for IPSec/SSL-VPN alongside the WAN, LAN, and management interfaces already in use. Site-to-site connectivity between HQ and Branch is instead achieved through the static-routed WAN transit link described above.
 
 
-### 7. VPN
-<!-- TODO -->
-- IPSec site-to-site (route-based) between Firewall-HQ and Firewall-BR.
-- (Optional) SSL-VPN for remote access.
-
-
-### 8. Plus Features (optional)
-<!-- TODO: remove this section if you don't implement it -->
+### 7. Plus Features (optional)
+Not implemented. SD-WAN and HA both require additional interfaces/devices that are not available in this license-limited topology.
 - [ ] SD-WAN
 - [ ] High Availability (HA)
 
@@ -119,31 +112,17 @@ Example: **PC-1 (192.168.10.10) pings PC-2 (192.168.20.10)**
 
 Describe each result in words — exact command output, or a short summary of what happened.
 
-| Test | Command / Method | Result |
-|---|---|---|
-| Connectivity between sites | `ping 192.168.20.10` from PC-1 | <!-- TODO: e.g. "Reply from 192.168.20.10, 0% packet loss, avg RTT 2ms" --> |
-| HQ routing table | `get router info routing-table all` | <!-- TODO: e.g. "Static route to 192.168.20.0/24 via 10.0.0.2 present, distance 10" --> |
-| Firewall policy hit count | `diagnose firewall statistics` | <!-- TODO: e.g. "Policy ID 1 (port2→port1) showing active sessions and increasing packet count" --> |
-| VPN tunnel status | `diagnose vpn tunnel list` | <!-- TODO: e.g. "Tunnel 'vpn-to-BR' status: up, selectors matching 192.168.10.0/24 <-> 192.168.20.0/24" --> |
+Test	Command / Method	Result
+Connectivity between sites	ping 192.168.20.10 from PC-1	<!-- TODO: e.g. "Reply from 192.168.20.10, 0% packet loss, avg RTT 2ms" -->
+HQ routing table	get router info routing-table all	<!-- TODO: e.g. "Static route to 192.168.20.0/24 via 10.0.0.2 present, distance 10" -->
+Firewall policy hit count	diagnose firewall statistics	<!-- TODO: e.g. "Policy ID 1 (port2→port1) showing active sessions and increasing packet count" -->
 
 ---
 
 ## 📂 Repository Structure
 
-```
 fortigate-graduation-project/
 ├── README.md
-└── configs/
-    ├── accounts.conf
-    ├── interfaces.conf
-    ├── routing.conf
-    ├── firewall-policy.conf
-    ├── authentication.conf
-    ├── security-profiles.conf
-    └── vpn.conf
-```
-
----
 
 ## 🎯 Conclusion
 
