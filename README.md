@@ -144,4 +144,4 @@ This project was created as part of the requirements for the **FortiOS 7.6 Admin
 - Ibrahim Ashraf Gado
 - Mohamed Amr
 
-🔗 [LinkedIn post link](#) <!-- TODO: add the link after publishing -->
+🔗 [LinkedIn post link](#) https://lnkd.in/p/e733rUrs
