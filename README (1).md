@@ -84,7 +84,7 @@ The network follows a classic **HQ-to-Branch transit topology**: two separate lo
 - (Optional) Integration with RADIUS/LDAP
 
 ### 6. Security Profile
-Not implemented. The FortiGate license used in this lab is a limited/evaluation license and does not include UTM security profile support (AntiVirus, Web Filter, etc.), so this requirement could not be configured in the current topology.
+AntiVirus, Web Filter, SSL-Inspection, and IPS Sensor profiles configured and applied to all firewall policies (both the LAN-to-WAN policy and the HQ↔Branch VPN policy).
 
 
 ### 7. VPN
